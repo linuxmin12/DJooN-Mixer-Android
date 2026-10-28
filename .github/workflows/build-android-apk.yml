@@ -1,0 +1,58 @@
+name: Build DJooN Mixer APK
+
+on:
+workflow_dispatch:
+push:
+branches:
+- main
+
+jobs:
+build:
+runs-on: ubuntu-latest
+
+```
+steps:
+  - name: Ambil kode proyek
+    uses: actions/checkout@v4
+
+  - name: Siapkan Java
+    uses: actions/setup-java@v4
+    with:
+      distribution: temurin
+      java-version: '17'
+
+  - name: Siapkan Node.js
+    uses: actions/setup-node@v4
+    with:
+      node-version: '20'
+
+  - name: Siapkan Android SDK
+    uses: android-actions/setup-android@v3
+
+  - name: Periksa proyek
+    run: |
+      ls -la
+      test -f package.json
+
+  - name: Pasang dependensi
+    run: npm install
+
+  - name: Build aplikasi web
+    run: npm run build
+
+  - name: Sinkronkan Capacitor Android
+    run: npx cap sync android
+
+  - name: Build APK
+    run: |
+      cd android
+      chmod +x gradlew
+      ./gradlew assembleDebug
+
+  - name: Simpan APK
+    uses: actions/upload-artifact@v4
+    with:
+      name: DJooN-Mixer-APK
+      path: android/app/build/outputs/apk/debug/app-debug.apk
+      if-no-files-found: error
+```
