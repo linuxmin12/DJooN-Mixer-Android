@@ -1,0 +1,17 @@
+MIXER DJooN — By BohlamSunarya
+Source project status: packaged and smoke-tested in Chromium.
+
+Validated in this environment:
+- 24 channel strips render.
+- AudioContext powers on successfully (44.1 kHz in test runtime).
+- WAV file loads and plays through the master output; channel/master meters respond.
+- Channel route, parametric EQ controls, send controls, and subgroup controls respond.
+- Project export embeds loaded audio data; project import restores asset and routing.
+- Master recording creates a downloadable recording in supported Chromium.
+- No JavaScript console errors in the smoke tests.
+
+Not built in this environment:
+- Windows .exe: requires a Windows build host and npm dependency download.
+- Android .apk: requires Android Studio/SDK, JDK, Gradle dependency downloads, and an Android build host.
+
+Use Build_Windows_EXE.bat or Build_Android_APK.bat on a suitably configured Windows PC.

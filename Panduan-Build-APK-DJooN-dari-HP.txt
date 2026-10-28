@@ -1,0 +1,41 @@
+PANDUAN MEMBUAT APK DJooN MIXER HANYA DENGAN HP
+
+Yang dibutuhkan:
+- Akun GitHub
+- File DJooN Mixer.zip yang kamu kirim
+- Browser di HP
+
+LANGKAH 1 — Buat repository
+1. Buka https://github.com dan masuk/daftar akun.
+2. Buat repository baru bernama djoon-mixer-apk.
+3. Pilih Public atau Private, lalu Create repository.
+
+LANGKAH 2 — Unggah ZIP proyek
+1. Di repository, tekan Add file > Upload files.
+2. Unggah file bernama persis: DJooN Mixer.zip
+3. Tekan Commit changes.
+
+LANGKAH 3 — Tambahkan workflow build
+1. Tekan Add file > Create new file.
+2. Pada nama file, ketik persis:
+   .github/workflows/build-android-apk.yml
+3. Buka file build-android-apk.yml yang disediakan bersama panduan ini, salin seluruh isinya, lalu tempel ke editor GitHub.
+4. Tekan Commit changes.
+
+LANGKAH 4 — Jalankan build
+1. Buka tab Actions di repository.
+2. Pilih Build DJooN Mixer Android APK.
+3. Tekan Run workflow > Run workflow.
+4. Tunggu sampai proses selesai. Build pertama bisa memakan waktu beberapa menit dan harus terhubung internet.
+
+LANGKAH 5 — Unduh APK
+1. Buka hasil workflow yang selesai dengan tanda centang hijau.
+2. Gulir ke bagian Artifacts.
+3. Unduh DJooN-Mixer-debug-APK.zip.
+4. Ekstrak ZIP artifact tersebut di HP; di dalamnya ada app-debug.apk.
+5. Buka APK untuk memasang. Jika diminta, izinkan instalasi dari sumber yang digunakan.
+
+Catatan:
+- Ini adalah APK debug untuk pengujian, bukan rilis Play Store.
+- Build membutuhkan internet dan bisa gagal jika ada dependency atau konfigurasi SDK yang tidak cocok. Jika gagal, buka workflow, masuk ke log langkah merah, lalu kirim screenshot atau salin pesan error terakhir agar bisa diperbaiki.
+- Jangan mengunggah kata sandi, token, atau keystore pribadi ke repository.
